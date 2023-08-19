@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Page Example</title>
+</head>
+<body>
+  <h2>Small size Experimental page with auto population but without functional button</h2>
+
+  <label for="input1">Input 1:</label>
+  <textarea id="input1" oninput="autoPopulateInputs()" placeholder="Enter text for Input 1"></textarea><br>
+
+  <label for="input2">Input 2:</label>
+  <textarea id="input2" placeholder="Enter text for Input 2"></textarea><br>
+
+  <label for="input3">Input 3:</label>
+  <textarea id="input3" placeholder="Enter text for Input 3"></textarea><br>
+
+  <label for="input4">Input 4:</label>
+  <textarea id="input4" placeholder="Enter text for Input 4"></textarea><br>
+
+ 
+  
+  <script>
+    var valuesArray = [
+      { input1: "123", input2: "value12", input3: "value13", input4: "value14" },
+      { input1: "456", input2: "value22", input3: "value23", input4: "value24" },
+      // Add more values as needed
+    ];
+
+
+
+    function autoPopulateInputs() {
+      var input1Value = document.getElementById("input1").value;
+      var matchingValue = valuesArray.find(function(item) {
+        return item.input1 === input1Value;
+      });
+
+      if (matchingValue) {
+        document.getElementById("input2").value = matchingValue.input2;
+        document.getElementById("input3").value = matchingValue.input3;
+        document.getElementById("input4").value = matchingValue.input4;
+      } else {
+        document.getElementById("input2").value = "";
+        document.getElementById("input3").value = "";
+        document.getElementById("input4").value = "";
+      }
+    }
+    </script>
+    </body>
+    </html>
